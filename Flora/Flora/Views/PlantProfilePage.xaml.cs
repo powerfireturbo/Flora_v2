@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flora.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,10 @@ namespace Flora.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        public PlantProfilePage(Plant plant): this()
+        {
+            BindingContext = plant;
+        }
+    }
 }

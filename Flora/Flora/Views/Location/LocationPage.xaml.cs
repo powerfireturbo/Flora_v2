@@ -25,11 +25,11 @@ namespace Flora.Views.Location
         private async void GPSSearch_Clicked(object sender, EventArgs e)
         {
             int radius = int.Parse(GPSRadius.Text);
-            Debug.WriteLine("Radius = " + radius);
 
-            List<Plant> ps = await App.Plants.GetPlantsWithinRadiusAsync(radius);
-            Debug.WriteLine("Made it past List<Plant> ps. Count = " + ps.Count);
-            await Navigation.PushAsync(new DynamicKeyPage(ps));
+            List<Plant> plants = await App.Plants.GetPlantsWithinRadiusAsync(radius);
+            //await Navigation.PushAsync(new DynamicKeyPage(plants));
+            await Navigation.PushAsync(new ResultsPage(plants));
+
         }
 
         private async void RegionSearch_Clicked(object sender, EventArgs e)

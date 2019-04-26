@@ -8,13 +8,15 @@ namespace Flora.ViewModels.Location
 {
     class ResultsPageViewModel : INotifyPropertyChanged
     {
-        public List<FamilyList> ResultsList { get; private set; }
+        public List<FamilyList> ResultsList { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ResultsPageViewModel(List<Plant> plants)
         {
+            ResultsList = new List<FamilyList>();
 
+            AddList(plants);
         }
 
         private void AddList(List<Plant> plants)
@@ -30,6 +32,7 @@ namespace Flora.ViewModels.Location
             foreach(string f in families)
             {
                 FamilyList famList = new FamilyList(f, plants.FindAll(p => p.Family == f));
+                ResultsList.Add(famList);
             }
             OnPropertyChanged("ResultsList");
         }
