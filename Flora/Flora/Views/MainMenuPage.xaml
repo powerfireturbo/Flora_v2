@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Flora.Views.MainMenuPage"
+             Title="Flora of Indiana">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Find Plant By Location" 
+                    VerticalOptions="FillAndExpand"
+                    Margin="20,50,20,0"
+                    x:Name="LocationButton" 
+                    Clicked="LocationButton_Clicked" />
+            <Button Text="Direct Plant Lookup" 
+                    VerticalOptions="FillAndExpand"
+                    Margin="20,50"
+                    x:Name="DirectLookupButton" 
+                    Clicked="DirectLookupButton_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

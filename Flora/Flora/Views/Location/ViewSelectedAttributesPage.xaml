@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Flora.Views.Location.ViewSelectedAttributesPage"
+             Title="Selected Attributes">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand">
+                <Button x:Name="ClearSelectedAttributes" 
+                        HorizontalOptions="FillAndExpand"
+                        Text="Clear"
+                        Margin="5,5,0,5"
+                        Clicked="ClearSelectedAttributes_Clicked" />
+                <Button x:Name="DoneEditing" 
+                        HorizontalOptions="FillAndExpand"
+                        Text="Done"
+                        Margin="0,5,5,5"
+                        Clicked="DoneEditing_Clicked"/>
+            </StackLayout>
+            <ListView x:Name="TheList" ItemsSource="{Binding SelectedAttributes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell x:Name="Cell">
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="FillAndExpand"
+                                             Spacing="0">
+                                    <Label x:Name="AttributeSecondHeading" 
+                                           Text="{Binding SecondHeading}"
+                                           Margin="5,0,0,0"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"/>
+                                    <Label x:Name="AttributeName" 
+                                           Text="{Binding Name}"
+                                           Margin="0"
+                                           HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="Center"/>
+                                    <Button x:Name="RemoveAttribute" 
+                                            Text="X"
+                                            HeightRequest="20"
+                                            WidthRequest="20"
+                                            Padding="0"
+                                            Margin="0,0,5,0"
+                                            HorizontalOptions="End"
+                                            Clicked="RemoveAttribute_Clicked"
+                                            VerticalOptions="Center"/> 
+                                    
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

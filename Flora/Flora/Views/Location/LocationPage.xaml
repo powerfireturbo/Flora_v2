@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Flora.ViewModels.Location" 
+             x:Class="Flora.Views.Location.LocationPage"
+             Title="Find By Location">
+    <ContentPage.BindingContext>
+        <local:LocationViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Search Using GPS" 
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Large"/>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="5">
+                <Label Text="Radius:" />
+                <Entry x:Name="GPSRadius" 
+                       Text="25"
+                       Keyboard="Numeric"/>
+                <Label Text="km" />
+            </StackLayout>
+            <Button x:Name="GPSSearch" 
+                    Text="Search"
+                    Clicked="GPSSearch_Clicked"/>
+            
+            <Label Text="Search With Region Info"
+                HorizontalOptions="CenterAndExpand"
+                   FontSize="Large"/>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="5">
+                <Label Text="State:" />
+                <Entry x:Name="State"
+                    Text="Indiana" 
+                       IsEnabled="False" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="5">
+                <Label Text="County:" />
+                <Entry x:Name="County" 
+                       Text="{Binding County}"
+                       IsEnabled="{Binding StateIsSet}" />
+            </StackLayout>
+            <Button x:Name="RegionSearch"
+                    Text="Search" 
+                    Clicked="RegionSearch_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

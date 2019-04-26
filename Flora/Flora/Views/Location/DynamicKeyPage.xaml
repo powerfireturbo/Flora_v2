@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Flora.Views.Location.DynamicKeyPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand">
+                <Button x:Name="SelectedAttributesButton" 
+                        Text="{Binding SelectedAttributes.Count, StringFormat='Edit Attributes({0})'}"
+                        Clicked="SelectedAttributesButton_Clicked"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="5,5,0,5"/>
+                <Button x:Name="Results" 
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding CurrentList.Count, StringFormat='Results({0})'}"
+                        Margin="0,5,5,5"
+                        Clicked="Results_Clicked"/>
+            </StackLayout>
+            <!--<Button x:Name="SelectedAttributesButton" 
+                    Text="{Binding SelectedAttributes.Count, StringFormat='Edit Selected Attributes ({0})'}"
+                    Clicked="SelectedAttributesButton_Clicked"/>-->
+            <ListView x:Name="FirstHeadingList" 
+                      ItemsSource="{Binding Key.Keys}"
+                  ItemSelected="OnListViewItemSelected" />
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
