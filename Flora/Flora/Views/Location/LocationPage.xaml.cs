@@ -16,10 +16,12 @@ namespace Flora.Views.Location
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LocationPage : ContentPage
 	{
-        public LocationViewModel ViewModel { get; }
+        public LocationViewModel ViewModel;
 		public LocationPage ()
 		{
             InitializeComponent ();
+            ViewModel = new LocationViewModel();
+            BindingContext = ViewModel;
 		}
 
         private async void GPSSearch_Clicked(object sender, EventArgs e)
@@ -36,11 +38,15 @@ namespace Flora.Views.Location
         {
             if (ViewModel.County != null)
             {
-                await Navigation.PushAsync(new DynamicKeyPage(await App.Plants.GetPlantsByStateAsync(ViewModel.State)));
+                //await Navigation.PushAsync(new DynamicKeyPage(await App.Plants.GetPlantsByStateAsync(ViewModel.State)));
+                await Navigation.PushAsync(new ResultsPage(await App.Plants.GetPlantsByStateAsync(ViewModel.State)));
+
             }
             else
             {
-                await Navigation.PushAsync(new DynamicKeyPage(await App.Plants.GetPlantsByCountyAsync(ViewModel.State, ViewModel.County)));
+                //await Navigation.PushAsync(new DynamicKeyPage(await App.Plants.GetPlantsByCountyAsync(ViewModel.State, ViewModel.County)));
+                await Navigation.PushAsync(new ResultsPage(await App.Plants.GetPlantsByCountyAsync(ViewModel.State, ViewModel.County)));
+
             }
         }
     }

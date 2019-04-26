@@ -8,18 +8,19 @@ using Xamarin.Forms.Xaml;
 
 namespace Flora.ViewModels.Location
 {
-    public class LocationViewModel
+    public class LocationViewModel: INotifyPropertyChanged
     {
         private string state = "indiana";
         private string county;
         public bool StateIsSet { get; private set; } = true;
         public string State
         {
-            get => county;
+            get => state;
             set
             {
                 state = value.ToLower();
                 StateIsSet = true;
+                OnPropertyChanged("State");
             }
         }
         public string County
@@ -28,9 +29,19 @@ namespace Flora.ViewModels.Location
             set
             {
                 if (StateIsSet)
+                {
                     county = value.ToLower();
+                    OnPropertyChanged("County");
+                }
+
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

@@ -1,12 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Flora.ViewModels.Location" 
              x:Class="Flora.Views.Location.LocationPage"
              Title="Find By Location">
-    <ContentPage.BindingContext>
-        <local:LocationViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Search Using GPS" 
@@ -17,7 +13,8 @@
                 <Label Text="Radius:" />
                 <Entry x:Name="GPSRadius" 
                        Text="25"
-                       Keyboard="Numeric"/>
+                       Keyboard="Numeric"
+                       HorizontalOptions="CenterAndExpand"/>
                 <Label Text="km" />
             </StackLayout>
             <Button x:Name="GPSSearch" 
@@ -31,15 +28,17 @@
                          Spacing="5">
                 <Label Text="State:" />
                 <Entry x:Name="State"
-                    Text="Indiana" 
-                       IsEnabled="False" />
+                       Text="{Binding State,Mode=TwoWay}"
+                       IsEnabled="False" 
+                       HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          Spacing="5">
                 <Label Text="County:" />
                 <Entry x:Name="County" 
-                       Text="{Binding County}"
-                       IsEnabled="{Binding StateIsSet}" />
+                       Text="{Binding County,Mode=TwoWay}"
+                       IsEnabled="{Binding StateIsSet}" 
+                       HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <Button x:Name="RegionSearch"
                     Text="Search" 
