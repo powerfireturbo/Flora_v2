@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
-using System.Linq;
-using System.Threading.Tasks;
-using Flora.Models;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Flora.Models
 {
-    
+
     public class DynamicKey: Dictionary<string, Dictionary<string, ObservableCollection<Attribute>>>
     {
         public DynamicKey() { }

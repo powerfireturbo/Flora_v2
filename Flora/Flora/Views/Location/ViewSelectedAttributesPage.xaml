@@ -6,16 +6,16 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="FillAndExpand">
+                         HorizontalOptions="FillAndExpand" Spacing="0">
                 <Button x:Name="ClearSelectedAttributes" 
                         HorizontalOptions="FillAndExpand"
                         Text="Clear"
-                        Margin="5,5,0,5"
+                        CornerRadius="0"
                         Clicked="ClearSelectedAttributes_Clicked" />
                 <Button x:Name="DoneEditing" 
                         HorizontalOptions="FillAndExpand"
                         Text="Done"
-                        Margin="0,5,5,5"
+                        CornerRadius="0"
                         Clicked="DoneEditing_Clicked"/>
             </StackLayout>
             <ListView x:Name="TheList" ItemsSource="{Binding SelectedAttributes}">

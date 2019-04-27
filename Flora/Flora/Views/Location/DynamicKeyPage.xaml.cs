@@ -1,8 +1,6 @@
 ﻿using Flora.Models;
 using Flora.ViewModels.Location;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +9,7 @@ namespace Flora.Views.Location
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DynamicKeyPage : ContentPage
 	{
-        public static DynamicKeyPageViewModel KeyViewModel;
+        public static LocationSearchResultViewModel KeyViewModel;
 
         public DynamicKeyPage ()
 		{
@@ -21,11 +19,11 @@ namespace Flora.Views.Location
 
         public DynamicKeyPage(List<Plant> plants) : this()
         {
-            KeyViewModel = new DynamicKeyPageViewModel(plants);
+            KeyViewModel = new LocationSearchResultViewModel(plants);
             BindingContext = KeyViewModel;
         }
 
-        public DynamicKeyPage(DynamicKeyPageViewModel dkpvm) : this()
+        public DynamicKeyPage(LocationSearchResultViewModel dkpvm) : this()
         {
             KeyViewModel = dkpvm;
             BindingContext = KeyViewModel;

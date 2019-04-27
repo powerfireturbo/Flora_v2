@@ -2,10 +2,6 @@
 using Flora.ViewModels.Location;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,8 +10,7 @@ namespace Flora.Views.Location
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ResultsPage : ContentPage
     {
-        public static ResultsPageViewModel ViewModel;
-        public static DynamicKeyPageViewModel KeyVM;
+        public static LocationSearchResultViewModel ViewModel;
 
         public ResultsPage()
         {
@@ -24,14 +19,12 @@ namespace Flora.Views.Location
 
         public ResultsPage(List<Plant> plants): this()
         {
-            ViewModel = new ResultsPageViewModel();
-            KeyVM = new DynamicKeyPageViewModel(plants);
+            ViewModel = new LocationSearchResultViewModel(plants);
             BindingContext = ViewModel;
         }
 
         protected override void OnAppearing()
         {
-            ViewModel.Plants = KeyVM.CurrentList.ToList();
             base.OnAppearing();
         }
 
@@ -42,7 +35,7 @@ namespace Flora.Views.Location
 
         private async void Refine_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DynamicKeyPage(KeyVM));
+            await Navigation.PushAsync(new DynamicKeyPage(ViewModel));
         }
     }
 }

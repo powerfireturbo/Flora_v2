@@ -1,25 +1,20 @@
 ﻿using Flora.ViewModels.Location;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Flora.Views.Location
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ViewSelectedAttributesPage : ContentPage
 	{
-        public DynamicKeyPageViewModel KeyViewModel { get; private set; }
+        public LocationSearchResultViewModel KeyViewModel { get; private set; }
 		public ViewSelectedAttributesPage ()
 		{
 			InitializeComponent ();
 		}
 
-        public ViewSelectedAttributesPage(DynamicKeyPageViewModel key): this()
+        public ViewSelectedAttributesPage(LocationSearchResultViewModel key): this()
         {
             KeyViewModel = key;
             BindingContext = KeyViewModel;

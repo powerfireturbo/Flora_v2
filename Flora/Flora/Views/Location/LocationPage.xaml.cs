@@ -1,19 +1,13 @@
-﻿using Flora.Data;
-using Flora.Models;
+﻿using Flora.Models;
 using Flora.ViewModels.Location;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Flora.Views.Location
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LocationPage : ContentPage
 	{
         public LocationViewModel ViewModel;

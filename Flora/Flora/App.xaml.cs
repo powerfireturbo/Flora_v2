@@ -1,12 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Flora.Data;
 using Flora.Views;
-using System.IO;
-using System.Reflection;
-using System.Diagnostics;
-using System.Net.Http;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Flora

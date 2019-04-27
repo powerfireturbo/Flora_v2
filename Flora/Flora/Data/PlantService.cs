@@ -1,12 +1,6 @@
-﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flora.Models;
-using System.Linq;
 namespace Flora.Data
 {
     public class PlantService : IPlantService

@@ -4,40 +4,45 @@
              x:Class="Flora.Views.Location.LocationPage"
              Title="Find By Location">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout HorizontalOptions="FillAndExpand"
-                         VerticalOptions="CenterAndExpand">
+        <StackLayout Spacing="0">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
                 <Label Text="Search Using GPS" 
                        HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="CenterAndExpand"
-                       FontSize="Large"/>
-                <Label Text="Radius(km):" HorizontalOptions="Start"/>
+                       FontSize="Large" Margin="0, 10, 0, 15"/>
+                <Label Text="Radius(km):" HorizontalOptions="Start" Margin="10,0,0,0"/>
                 <Entry x:Name="GPSRadius" 
                        Text="25"
-                       Keyboard="Numeric"/>
+                       Keyboard="Numeric"
+                       Margin="0"/>
                 <Button x:Name="GPSSearch" 
                         Text="Search"
-                        Clicked="GPSSearch_Clicked"/>
+                        Clicked="GPSSearch_Clicked"
+                        Margin="0,10,0,0"/>
             </StackLayout>
 
-            <StackLayout HorizontalOptions="FillAndExpand"
-                         VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
                 <Label Text="Search With Region Info"
-                        HorizontalOptions="CenterAndExpand"
-                        FontSize="Large"/>
-                <Label Text="State:" HorizontalOptions="Start" />
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="Large"
+                       Margin="0,10,0,0"/>
+                <Label Text="Options left blank will not be used."
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="Small"
+                       Margin="0,0,0,15"/>
+                <Label Text="State:" HorizontalOptions="Start" Margin="10,0,0,0"/>
                 <Entry x:Name="State"
-                        Text="{Binding State,Mode=TwoWay}"
-                        IsEnabled="False"/>
-                <Label Text="County:" HorizontalOptions="Start" />
+                       Text="{Binding State,Mode=TwoWay}"
+                       IsEnabled="False"
+                       Margin="0"/>
+                <Label Text="County:" HorizontalOptions="Start" Margin="10,0,0,0"/>
                 <Entry x:Name="County" 
-                        Text="{Binding County,Mode=TwoWay}"
-                        IsEnabled="{Binding StateIsSet}" />
+                       Text="{Binding County,Mode=TwoWay}"
+                       Placeholder="No County Entered"
+                       IsEnabled="{Binding StateIsSet}" Margin="0"/>
                 <Button x:Name="RegionSearch"
                         Text="Search" 
-                        Clicked="RegionSearch_Clicked"/>
+                        Clicked="RegionSearch_Clicked" Margin="0,10,0,0"/>
             </StackLayout>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

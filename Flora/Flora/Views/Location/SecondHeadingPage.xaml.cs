@@ -1,21 +1,15 @@
 ﻿using Flora.ViewModels.Location;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Flora.Views.Location
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SecondHeadingPage : ContentPage
 	{
-        public DynamicKeyPageViewModel KeyViewModel { get; set; }
+        public LocationSearchResultViewModel KeyViewModel { get; set; }
         public string FirstHeading { get; set; }
-		public SecondHeadingPage (DynamicKeyPageViewModel key)
+		public SecondHeadingPage (LocationSearchResultViewModel key)
 		{
 			InitializeComponent ();
             KeyViewModel = key;

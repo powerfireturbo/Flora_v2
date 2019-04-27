@@ -1,25 +1,24 @@
 ﻿using Flora.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Flora.ViewModels.Location
 {
-    public class DynamicKeyPageViewModel: INotifyPropertyChanged
+    public class LocationSearchResultViewModel: INotifyPropertyChanged
     {
         private readonly List<Plant> baseList;
+
+        private ObservableCollection<FamilyList> _resultsList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string SelectedFirstHeading { get; set; }
+
         public string SelectedSecondHeading { get; set; }
+
+        public bool DoneSelecting { get; set; }
 
         public DynamicKey Key { get; private set; }
 
@@ -27,22 +26,47 @@ namespace Flora.ViewModels.Location
 
         public ObservableCollection<Plant> CurrentList { get; private set; }
 
-
-        public bool DoneSelecting { get; set; }
-
-        public DynamicKeyPageViewModel()
+        public ObservableCollection<FamilyList> ResultsList
         {
-
+            get
+            {
+                ReloadResultsList(CurrentList.ToList());
+                return _resultsList;
+            }
+            set => _resultsList = value;
         }
 
-        public DynamicKeyPageViewModel(List<Plant> plants)
+
+        public LocationSearchResultViewModel() { }
+
+        public LocationSearchResultViewModel(List<Plant> plants)
         {
             baseList = plants;
             CurrentList = new ObservableCollection<Plant>(plants);
             Key = new DynamicKey();
             Key.LoadKey(plants);
             SelectedAttributes = new ObservableCollection<Models.Attribute>();
-        } 
+            _resultsList = new ObservableCollection<FamilyList>();
+        }
+
+        private void ReloadResultsList(List<Plant> plants)
+        {
+            _resultsList.Clear();
+            List<string> families = new List<string>();
+            foreach (Plant p in plants)
+            {
+                if (!families.Contains(p.Family))
+                {
+                    families.Add(p.Family);
+                }
+            }
+            foreach (string f in families)
+            {
+                FamilyList famList = new FamilyList(f, plants.FindAll(p => p.Family == f));
+                _resultsList.Add(famList);
+            }
+            OnPropertyChanged("ResultsList");
+        }
 
         public void SelectAttribute(Models.Attribute attribute)
         {
