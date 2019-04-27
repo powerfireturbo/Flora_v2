@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Flora.Views.Location.ResultsPage"
-             Title="Results">
+             Title="{Binding Plants.Count, StringFormat='Results ({0})'}">
     <ContentPage.Content>
         <StackLayout>
+            <Button x:Name="Refine" 
+                    Text="Refine Results"
+                    Clicked="Refine_Clicked"/>
             <ListView ItemsSource="{Binding ResultsList}"
           IsGroupingEnabled="true">
                 <ListView.GroupHeaderTemplate>

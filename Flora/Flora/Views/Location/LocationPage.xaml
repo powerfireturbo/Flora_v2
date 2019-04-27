@@ -5,44 +5,39 @@
              Title="Find By Location">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Search Using GPS" 
-                   HorizontalOptions="CenterAndExpand"
-                   FontSize="Large"/>
-            <StackLayout Orientation="Horizontal"
-                         Spacing="5">
-                <Label Text="Radius:" />
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="Search Using GPS" 
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Large"/>
+                <Label Text="Radius(km):" HorizontalOptions="Start"/>
                 <Entry x:Name="GPSRadius" 
                        Text="25"
-                       Keyboard="Numeric"
-                       HorizontalOptions="CenterAndExpand"/>
-                <Label Text="km" />
+                       Keyboard="Numeric"/>
+                <Button x:Name="GPSSearch" 
+                        Text="Search"
+                        Clicked="GPSSearch_Clicked"/>
             </StackLayout>
-            <Button x:Name="GPSSearch" 
-                    Text="Search"
-                    Clicked="GPSSearch_Clicked"/>
-            
-            <Label Text="Search With Region Info"
-                HorizontalOptions="CenterAndExpand"
-                   FontSize="Large"/>
-            <StackLayout Orientation="Horizontal"
-                         Spacing="5">
-                <Label Text="State:" />
+
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="Search With Region Info"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="Large"/>
+                <Label Text="State:" HorizontalOptions="Start" />
                 <Entry x:Name="State"
-                       Text="{Binding State,Mode=TwoWay}"
-                       IsEnabled="False" 
-                       HorizontalOptions="CenterAndExpand"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         Spacing="5">
-                <Label Text="County:" />
+                        Text="{Binding State,Mode=TwoWay}"
+                        IsEnabled="False"/>
+                <Label Text="County:" HorizontalOptions="Start" />
                 <Entry x:Name="County" 
-                       Text="{Binding County,Mode=TwoWay}"
-                       IsEnabled="{Binding StateIsSet}" 
-                       HorizontalOptions="CenterAndExpand"/>
+                        Text="{Binding County,Mode=TwoWay}"
+                        IsEnabled="{Binding StateIsSet}" />
+                <Button x:Name="RegionSearch"
+                        Text="Search" 
+                        Clicked="RegionSearch_Clicked"/>
             </StackLayout>
-            <Button x:Name="RegionSearch"
-                    Text="Search" 
-                    Clicked="RegionSearch_Clicked"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

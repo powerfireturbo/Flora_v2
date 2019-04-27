@@ -29,25 +29,24 @@ namespace Flora.Views.Location
             int radius = int.Parse(GPSRadius.Text);
 
             List<Plant> plants = await App.Plants.GetPlantsWithinRadiusAsync(radius);
-            //await Navigation.PushAsync(new DynamicKeyPage(plants));
             await Navigation.PushAsync(new ResultsPage(plants));
 
         }
 
         private async void RegionSearch_Clicked(object sender, EventArgs e)
         {
-            if (ViewModel.County != null)
+            List<Plant> plants;
+            if (!ViewModel.CountyIsSet)
             {
-                //await Navigation.PushAsync(new DynamicKeyPage(await App.Plants.GetPlantsByStateAsync(ViewModel.State)));
-                await Navigation.PushAsync(new ResultsPage(await App.Plants.GetPlantsByStateAsync(ViewModel.State)));
-
+                plants = await App.Plants.GetPlantsByStateAsync(ViewModel.State);
             }
             else
             {
-                //await Navigation.PushAsync(new DynamicKeyPage(await App.Plants.GetPlantsByCountyAsync(ViewModel.State, ViewModel.County)));
-                await Navigation.PushAsync(new ResultsPage(await App.Plants.GetPlantsByCountyAsync(ViewModel.State, ViewModel.County)));
-
+                plants = await App.Plants.GetPlantsByCountyAsync(ViewModel.State, ViewModel.County);
             }
+            await Navigation.PushAsync(new ResultsPage(plants));
+
         }
+
     }
 }

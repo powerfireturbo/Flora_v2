@@ -14,6 +14,9 @@ namespace Flora.Views.Location
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ResultsPage : ContentPage
     {
+        public static ResultsPageViewModel ViewModel;
+        public static DynamicKeyPageViewModel KeyVM;
+
         public ResultsPage()
         {
             InitializeComponent();
@@ -21,12 +24,25 @@ namespace Flora.Views.Location
 
         public ResultsPage(List<Plant> plants): this()
         {
-            BindingContext = new ResultsPageViewModel(plants);
+            ViewModel = new ResultsPageViewModel();
+            KeyVM = new DynamicKeyPageViewModel(plants);
+            BindingContext = ViewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            ViewModel.Plants = KeyVM.CurrentList.ToList();
+            base.OnAppearing();
         }
 
         private async void PlantCell_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PlantProfilePage((Plant)((TextCell)sender).BindingContext));
+        }
+
+        private async void Refine_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DynamicKeyPage(KeyVM));
         }
     }
 }

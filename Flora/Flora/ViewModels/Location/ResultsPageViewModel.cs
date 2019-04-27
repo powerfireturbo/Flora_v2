@@ -1,26 +1,40 @@
 ﻿using Flora.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
 namespace Flora.ViewModels.Location
 {
-    class ResultsPageViewModel : INotifyPropertyChanged
+    public class ResultsPageViewModel : INotifyPropertyChanged
     {
-        public List<FamilyList> ResultsList { get; set; }
+        private List<Plant> _plants;
+        public List<Plant> Plants {
+            get => _plants;
+            set {
+                ReloadList(value);
+                _plants = value;
+                OnPropertyChanged("Plants");
+            } }
+
+        public ObservableCollection<FamilyList> ResultsList { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ResultsPageViewModel(List<Plant> plants)
+        public ResultsPageViewModel()
         {
-            ResultsList = new List<FamilyList>();
-
-            AddList(plants);
+            ResultsList = new ObservableCollection<FamilyList>();
         }
 
-        private void AddList(List<Plant> plants)
+        public ResultsPageViewModel(List<Plant> plants): this()
         {
+            Plants = plants;
+        }
+
+        private void ReloadList(List<Plant> plants)
+        {
+            ResultsList.Clear();
             List<string> families = new List<string>();
             foreach(Plant p in plants)
             {

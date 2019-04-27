@@ -12,7 +12,8 @@ namespace Flora.ViewModels.Location
     {
         private string state = "indiana";
         private string county;
-        public bool StateIsSet { get; private set; } = true;
+        public bool StateIsSet { get; set; } = true;
+        public bool CountyIsSet { get; set; } = false;
         public string State
         {
             get => state;
@@ -31,6 +32,7 @@ namespace Flora.ViewModels.Location
                 if (StateIsSet)
                 {
                     county = value.ToLower();
+                    CountyIsSet = true;
                     OnPropertyChanged("County");
                 }
 

@@ -1,20 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Flora.Views.Location.DynamicKeyPage">
+             x:Class="Flora.Views.Location.DynamicKeyPage"
+             Title="Refine Results">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="FillAndExpand">
+                         HorizontalOptions="FillAndExpand"
+                         Spacing="0">
                 <Button x:Name="SelectedAttributesButton" 
                         Text="{Binding SelectedAttributes.Count, StringFormat='Edit Attributes({0})'}"
                         Clicked="SelectedAttributesButton_Clicked"
-                        HorizontalOptions="FillAndExpand"
-                        Margin="5,5,0,5"/>
+                        CornerRadius="0"
+                        HorizontalOptions="FillAndExpand" />
                 <Button x:Name="Results" 
                         HorizontalOptions="FillAndExpand"
-                        Text="{Binding CurrentList.Count, StringFormat='Results({0})'}"
-                        Margin="0,5,5,5"
+                        Text="{Binding CurrentList.Count, StringFormat='View Results({0})'}"
+                        CornerRadius="0"
                         Clicked="Results_Clicked"/>
             </StackLayout>
             <!--<Button x:Name="SelectedAttributesButton" 

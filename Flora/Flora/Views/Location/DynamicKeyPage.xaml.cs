@@ -2,6 +2,7 @@
 using Flora.ViewModels.Location;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,10 +25,15 @@ namespace Flora.Views.Location
             BindingContext = KeyViewModel;
         }
 
+        public DynamicKeyPage(DynamicKeyPageViewModel dkpvm) : this()
+        {
+            KeyViewModel = dkpvm;
+            BindingContext = KeyViewModel;
+        }
+
         protected override void OnAppearing()
         {
             KeyViewModel.DoneSelecting = false;
-            Title = "Dynamic Key";
             base.OnAppearing();
         }
 
@@ -46,9 +52,9 @@ namespace Flora.Views.Location
             await Navigation.PushAsync(new ViewSelectedAttributesPage(KeyViewModel)); 
         }
 
-        private void Results_Clicked(object sender, System.EventArgs e)
+        private async void Results_Clicked(object sender, System.EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
     }
 }
